@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : CharacterMovement
 {
-    private Transform _targetPosition;
-    
+    private Transform _target;
+
     public override void Start()
     {
         base.Start();
@@ -16,12 +16,12 @@ public class EnemyMovement : CharacterMovement
             return;
         }
 
-        _targetPosition = hero.transform;
+        _target = hero.transform;
     }
 
     public override void ApplyMove()
     {
-        Direction = (_targetPosition.position - transform.position).normalized;
-        Rigidbody.AddForce(Direction * MoveSpeed, ForceMode.VelocityChange);
+        transform.position 
+            = Vector3.MoveTowards(transform.position, _target.position, MoveSpeed * Time.fixedDeltaTime);
     }
 }

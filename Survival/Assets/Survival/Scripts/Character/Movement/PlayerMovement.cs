@@ -6,11 +6,16 @@ public class PlayerMovement : CharacterMovement
 {
     public override void ApplyMove()
     {
-        var horizontalInput = Input.GetAxis("Horizontal");
-        var verticalInput = Input.GetAxis("Vertical");
+        var horizontalInput = Input.GetAxisRaw("Horizontal");
+        var verticalInput = Input.GetAxisRaw("Vertical");
 
-        Direction = new Vector3(horizontalInput, 0, verticalInput) * MoveSpeed;
+        Direction = new Vector3(horizontalInput, 0, verticalInput).normalized;
         
-        Rigidbody.AddForce(Direction,ForceMode.VelocityChange);
+        var thisTransform = transform.position;
+        var targetPos = thisTransform + Direction;
+        
+        thisTransform =
+            Vector3.MoveTowards(thisTransform, targetPos, MoveSpeed * Time.fixedDeltaTime);
+        transform.position = thisTransform;
     }
 }

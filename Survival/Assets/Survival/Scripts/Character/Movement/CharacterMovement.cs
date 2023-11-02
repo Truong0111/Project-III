@@ -5,24 +5,30 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    protected Character Character;
     [field:SerializeField] public float MoveSpeed { get; private set; }
-    protected Rigidbody Rigidbody;
     protected Vector3 Direction;
 
     public virtual void Awake()
     {
-        Rigidbody = GetComponent<Rigidbody>();
+        Character = GetComponent<Character>();
     }
 
     public virtual void Start()
     {
-        
+        // MoveSpeed = Character.
     }
 
     public virtual void Update()
     {
-        ApplyMove();
+        
         ApplyRotate();
+    }
+
+
+    public virtual void FixedUpdate()
+    {
+        ApplyMove();
     }
 
     public virtual void ApplyMove()
@@ -36,6 +42,5 @@ public class CharacterMovement : MonoBehaviour
         var targetRotation = Quaternion.Euler(Direction);
         
         if (currentRotation == targetRotation) return;
-        Rigidbody.MoveRotation(targetRotation);
     }
 }

@@ -12,6 +12,7 @@ public class EnemySo : ScriptableObject
 public class EnemyValue
 {
     public EnemyType type;
+    public int id;
     public string name;
     public float health;
     public float armor;
@@ -27,7 +28,7 @@ public class EnemyTurn
     public float timeSpawn;
     public float timeExtend;
 }
-
+[System.Serializable]
 public enum EnemyType
 {
     Normal,
