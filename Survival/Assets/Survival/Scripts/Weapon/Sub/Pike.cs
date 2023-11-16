@@ -8,8 +8,8 @@ public class Pike : Weapon
     
     protected override void ApplyMove()
     { 
-        var targetPos = transform.position + transform.forward * transform.localScale.z;
-        transform.position = Vector3.MoveTowards(pikeChild.position, targetPos, Speed);
+        var targetPos = transform.position + transform.forward * pikeChild.localScale.z;
+        pikeChild.position = Vector3.MoveTowards(pikeChild.position, targetPos, Speed);
         CheckDeSpawn(targetPos);
     }
     
