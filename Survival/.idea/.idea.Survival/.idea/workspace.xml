@@ -6,17 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8c24971a-f5a5-4317-83fa-f8f34f2db416" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Survival/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Survival/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Maps/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Maps/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Prefabs/Character/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Prefabs/Character/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Prefabs/Character/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Prefabs/Character/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/SO/SOScripts/EnemySo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/SO/SOScripts/EnemySo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Hero.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Movement/CharacterMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Movement/CharacterMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Movement/EnemyMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Movement/EnemyMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Movement/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Scripts/Character/Movement/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Survival/Scripts/Weapon/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Survival/Scripts/Weapon/Weapon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,15 +22,26 @@
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/NewFields/NewFieldsRendererDefaultEditorPatch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/91dc399f41a440558c716315c7e834ab15aa00/50/7831639f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/91dc399f41a440558c716315c7e834ab15aa00/72/ff6de7e2/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/91dc399f41a440558c716315c7e834ab15aa00/f4/ca47f5e5/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/Project-III/Survival/Assets/Survival/SO/SOScripts/EnemySo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Survival/SO/SOScripts/HeroSo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Survival/SO/SOScripts/HeroUpgradeSo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Survival/SO/SOScripts/ListObjectSo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Survival/SO/SOScripts/WeaponSo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Survival/Scripts/Controller/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Survival/Scripts/Experience/Experience.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Survival/Scripts/Manager/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Survival/Scripts/UI/MenuUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Survival/Scripts/UI/SettingUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Survival/Scripts/Weapon/Main/WeaponInteraction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Survival/Scripts/Weapon/Spawner/MagicBallSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Survival/Scripts/Weapon/Sub/Shuriken.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity-atoms.unity-atoms@37ead24dbb/Packages/Core/Runtime/Variables/AtomBaseVariable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity-atoms.unity-atoms@37ead24dbb/Packages/InputSystem/Runtime/Interpreters/CallbackContextInterpreter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mobile.notifications@2.2.0/Editor/NotificationSettingsManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Documentation/XmlDocumentation.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -127,7 +127,18 @@
       <workItem from="1698594481573" duration="18000" />
       <workItem from="1698655241807" duration="3049000" />
       <workItem from="1698692089438" duration="15460000" />
-      <workItem from="1698896089009" duration="1092000" />
+      <workItem from="1698896089009" duration="1416000" />
+      <workItem from="1699183445712" duration="1584000" />
+      <workItem from="1699274156590" duration="1844000" />
+      <workItem from="1699281428820" duration="598000" />
+      <workItem from="1699507219208" duration="24149000" />
+      <workItem from="1699793999216" duration="5320000" />
+      <workItem from="1699804940936" duration="5680000" />
+      <workItem from="1699970040919" duration="6246000" />
+      <workItem from="1700058584716" duration="4519000" />
+      <workItem from="1700112772613" duration="1180000" />
+      <workItem from="1700113979156" duration="1124000" />
+      <workItem from="1700115123239" duration="183000" />
     </task>
     <task id="LOCAL-00001" summary="Base #2">
       <option name="closed" value="true" />
@@ -137,7 +148,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698591156454</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="movement(+ camera) + spawn weapon(test) + main Stat setup">
+      <option name="closed" value="true" />
+      <created>1698897454061</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698897454061</updated>
+    </task>
+    <task id="LOCAL-00003" summary="hero + enemy + weapon value, enemy + weapon spawner">
+      <option name="closed" value="true" />
+      <created>1700115291594</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700115291594</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
@@ -157,6 +184,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Base #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base #2" />
+    <MESSAGE value="movement(+ camera) + spawn weapon(test) + main Stat setup" />
+    <MESSAGE value="hero + enemy + weapon value, enemy + weapon spawner" />
+    <option name="LAST_COMMIT_MESSAGE" value="hero + enemy + weapon value, enemy + weapon spawner" />
   </component>
 </project>
