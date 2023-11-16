@@ -15,6 +15,7 @@ public class EnemyValue
     public int id;
     public string name;
     public float health;
+    public float damage;
     public float armor;
     public float speed;
     public float experience;

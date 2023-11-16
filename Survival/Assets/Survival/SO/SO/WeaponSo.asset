@@ -12,15 +12,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c14019dd7250e94b97227ea649245f7, type: 3}
   m_Name: WeaponSo
   m_EditorClassIdentifier: 
+  checkEnemyInRange: {fileID: 984011910275518772, guid: 556e0494695217248afd918e5205810d,
+    type: 3}
   weapons:
   - prefab: {fileID: 9172109365814121667, guid: 5ab8bfa10b8979247973a683ad9aa070,
       type: 3}
     weaponType: 0
-    weaponMovementType: 1
-    id: 0
-    name: BiParent
+    name: MagicBallParent
     count: 1
     spawnTime: 10
-    damage: 10
-    speed: 360
+    damage: 8
+    speed: 180
     duration: 5
+  - prefab: {fileID: 6412394688293977726, guid: 855b87e634b2fb54f84eb83e8d5686da,
+      type: 3}
+    weaponType: 3
+    name: PikeParent
+    count: 1
+    spawnTime: 5
+    damage: 10
+    speed: 0.045
+    duration: -1
+  - prefab: {fileID: 3528546465255691609, guid: 024f210b03530294fa955639b0711f0d,
+      type: 3}
+    weaponType: 1
+    name: BulletParent
+    count: 50
+    spawnTime: 10
+    damage: 2
+    speed: 50
+    duration: -1
+  - prefab: {fileID: 6424458715062645747, guid: fa290e36c3cc95048a85b4673d22c385,
+      type: 3}
+    weaponType: 4
+    name: SwordParent
+    count: 1
+    spawnTime: 5
+    damage: 10
+    speed: 540
+    duration: 1
+  - prefab: {fileID: 2267951610088793117, guid: 6fcd3b8b91bf05142bfc60c8628917e1,
+      type: 3}
+    weaponType: 5
+    name: EnergyBlastParent
+    count: 1
+    spawnTime: 1.2
+    damage: 5
+    speed: 2
+    duration: -1
+  - prefab: {fileID: 9158778660874854404, guid: a01839582909b8f4ba9ff65bd028ce8b,
+      type: 3}
+    weaponType: 2
+    name: ShurikenParent
+    count: 1
+    spawnTime: 5
+    damage: 5
+    speed: 40
+    duration: 4

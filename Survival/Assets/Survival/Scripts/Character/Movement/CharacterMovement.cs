@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     protected Character Character;
-    [field:SerializeField] public float MoveSpeed { get; private set; }
+    [field: SerializeField] public float MoveSpeed { get; private set; }
     protected Vector3 Direction;
 
     public virtual void Awake()
@@ -16,19 +16,19 @@ public class CharacterMovement : MonoBehaviour
 
     public virtual void Start()
     {
-        // MoveSpeed = Character.
+        
     }
 
     public virtual void Update()
     {
         
-        ApplyRotate();
     }
 
 
     public virtual void FixedUpdate()
     {
         ApplyMove();
+        ApplyRotate();
     }
 
     public virtual void ApplyMove()
@@ -36,11 +36,13 @@ public class CharacterMovement : MonoBehaviour
         
     }
 
+
+    private const float RotationSpeed = 180f;
+
     public virtual void ApplyRotate()
     {
-        var currentRotation = transform.rotation;
-        var targetRotation = Quaternion.Euler(Direction);
-        
-        if (currentRotation == targetRotation) return;
+        if (Direction == Vector3.zero) return;
+        var targetRotation = Quaternion.LookRotation(Direction, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 20f);
     }
 }

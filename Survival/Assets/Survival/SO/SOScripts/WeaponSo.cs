@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponSo", menuName = "SO/WeaponSo")]
 public class WeaponSo : ScriptableObject
 {
+    public GameObject checkEnemyInRange;
     public List<WeaponValue> weapons;
 }
 [System.Serializable]
@@ -13,8 +14,6 @@ public class WeaponValue
     public GameObject prefab;
     
     public WeaponType weaponType;
-    public WeaponMovementType weaponMovementType;
-    public int id;
     public string name;
     
     public int count;
@@ -28,14 +27,10 @@ public class WeaponValue
 
 public enum WeaponType
 {
-    
-}
-
-public enum WeaponMovementType
-{
-    Straight,
-    Around,
-    Round,
-    Random,
-    Path
+    MagicBall,
+    Gun,
+    Shuriken,
+    Pike,
+    Sword,
+    EnergyBlast
 }

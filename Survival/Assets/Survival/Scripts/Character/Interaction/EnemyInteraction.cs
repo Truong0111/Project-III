@@ -1,18 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyInteraction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Enemy Enemy => gameObject.GetComponentInParent<Enemy>();
+
+    [SerializeField] private float timePerPushDamage;
+    private float _timePerPushDamage;
+
+    private void Update()
+    {
+        _timePerPushDamage -= Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay(Collider other)
     {
-        
+        if (other.TryGetComponent<Hero>(out var hero))
+        {
+            if (_timePerPushDamage > 0) return;
+            hero.Health -= Enemy.Damage;
+            _timePerPushDamage = timePerPushDamage;
+        }
     }
 }

@@ -1,13 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [ShowInInspector]
     protected int ID { get; set; }
-    protected float Heath { get; set; }
-    protected float Armor { get; set; }
-    protected float Speed { get; set; }
-    protected float Experience { get; set; }
-
+    
+    [ShowInInspector]
+    public float Health { get; set; }
+    
+    [ShowInInspector]
+    public float Damage { get; set; }
+    
+    [ShowInInspector]
+    public float Armor { get; set; }
+    
+    [ShowInInspector]
+    public float Speed { get; set; }
+    
+    [ShowInInspector]
+    public float Experience { get; set; }
 }

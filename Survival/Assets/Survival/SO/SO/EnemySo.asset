@@ -12,3 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abea715ce03fa5d4892554444eed0cab, type: 3}
   m_Name: EnemySo
   m_EditorClassIdentifier: 
+  enemyValues:
+  - type: 0
+    id: 0
+    name: Test
+    health: 10
+    damage: 2
+    armor: 0
+    speed: 3
+    experience: 10
+    upgradePerTime: 0
+    drop: 0
+  - type: 0
+    id: 1
+    name: 
+    health: 20
+    damage: 2
+    armor: 1
+    speed: 3
+    experience: 10
+    upgradePerTime: 0
+    drop: 0
+  enemyTurns: []
