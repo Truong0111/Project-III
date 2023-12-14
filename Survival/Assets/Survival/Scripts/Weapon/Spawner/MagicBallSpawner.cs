@@ -8,13 +8,14 @@ public class MagicBallSpawner : WeaponSpawner
     
     public override IEnumerator SpawnWeapon()
     {
+        yield return new WaitUntil(() => Hero);
         var weaponCount = weapons.Count;
         
         for (var index = 0; index < weaponCount; index++)
         {
             var spawnWeapon = weapons[index].gameObject;
-            SetupPosition(spawnWeapon.transform, weaponCount, index);
             spawnWeapon.SetActive(true);
+            SetupPosition(spawnWeapon.transform, weaponCount, index);
         }
         yield return new WaitForSeconds(0f);
     }

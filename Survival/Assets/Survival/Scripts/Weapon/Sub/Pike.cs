@@ -13,7 +13,6 @@ public class Pike : Weapon
         CheckDeSpawn(targetPos);
     }
     
-    
     private void CheckDeSpawn(Vector3 targetPos)
     {
         if (Vector3.Distance(pikeChild.position, targetPos) < 0.01f)

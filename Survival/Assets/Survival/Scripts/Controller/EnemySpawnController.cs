@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemySpawnController : Singleton<EnemySpawnController>
 {
+    [SerializeField] private VoidEvent startGameEvent;
     [SerializeField] private EnemySo enemySo;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private float range = 15f;
@@ -14,6 +16,16 @@ public class EnemySpawnController : Singleton<EnemySpawnController>
     
     private static float ScreenWidth => Screen.width;
     private static float ScreenHeight => Screen.height;
+
+    private void Awake()
+    {
+        startGameEvent.Register(Init);
+    }
+
+    public void OnDisable()
+    {
+        startGameEvent.Unregister(Init);
+    }
 
     private void Start()
     {
@@ -25,10 +37,13 @@ public class EnemySpawnController : Singleton<EnemySpawnController>
         }
 
         _hero = hero.transform;
-        
-        StartCoroutine(SpawnEnemy());
     }
 
+    private void Init()
+    {
+        StartCoroutine(SpawnEnemy());
+    }
+    
     [Button]
     private IEnumerator SpawnEnemy()
     {
@@ -44,8 +59,8 @@ public class EnemySpawnController : Singleton<EnemySpawnController>
             enemySpawn.SetActive(true);
         }
     }
-    
-    public Vector2 RandomOnUnitCircle(float radius)
+
+    private static Vector2 RandomOnUnitCircle(float radius)
     {
         var randomAngle = Random.Range(0f, 360f);
 

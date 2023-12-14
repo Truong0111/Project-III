@@ -7,12 +7,13 @@ public class PikeSpawner : WeaponSpawner
 {
     public override IEnumerator SpawnWeapon()
     {
-        if (Hero) transform.rotation = Hero.transform.rotation;
+        yield return new WaitUntil(() => Hero);
+        transform.rotation = Hero.transform.rotation;
         foreach (var weapon in weapons)
         {
             var spawnWeapon = weapon.gameObject;
-            SetupPosition(spawnWeapon.transform);
             spawnWeapon.SetActive(true);
+            SetupPosition(spawnWeapon.transform);
             yield return new WaitForSeconds(0.3f);
         }
     }
@@ -20,5 +21,6 @@ public class PikeSpawner : WeaponSpawner
     private void SetupPosition(Transform objTransform)
     {
         objTransform.position = transform.position - transform.forward * objTransform.localScale.z / 2f;
+        objTransform.rotation = transform.rotation;
     }
 }

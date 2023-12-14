@@ -16,6 +16,7 @@ public class MenuUI : MonoBehaviour
 
     [Header("Event")] 
     [SerializeField] private VoidEvent startEvent;
+    [SerializeField] private VoidEvent menuEvent;
     [SerializeField] private VoidEvent powerUpEvent;
     [SerializeField] private VoidEvent settingEvent;
     [SerializeField] private VoidEvent quitEvent;
@@ -23,6 +24,8 @@ public class MenuUI : MonoBehaviour
 
     private void Awake()
     {
+        menuEvent.Register(ShowMenuUI);
+        
         startButton.onClick.AddListener(StartGame);
         powerUpButton.onClick.AddListener(PowerUp);
         settingButton.onClick.AddListener(Setting);
@@ -30,28 +33,48 @@ public class MenuUI : MonoBehaviour
         creditButton.onClick.AddListener(Credit);
     }
 
+    private void OnDestroy()
+    {
+        menuEvent.Unregister(ShowMenuUI);
+    }
+
     private void StartGame()
     {
         startEvent.Raise();
+        HideMenuUI();
     }
 
     private void PowerUp()
     {
         powerUpEvent.Raise();
+        HideMenuUI();
     }
 
     private void Setting()
     {
         settingEvent.Raise();
+        HideMenuUI();
     }
 
     private void Quit()
     {
         quitEvent.Raise();
+        HideMenuUI();
     }
 
     private void Credit()
     {
         creditEvent.Raise();
+        HideMenuUI();
+    }
+
+    private void ShowMenuUI()
+    {
+        gameObject.SetActive(true);
+    }
+
+    private void HideMenuUI()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -10,7 +10,7 @@ public class GunSpawner : WeaponSpawner
     {
         for (var i = 0; i < newCount; i++)
         {
-            var spawnWeapon = SimplePool.Spawn(Prefab, Vector3.zero, Quaternion.identity);
+            var spawnWeapon = SimplePool.Spawn(Prefab, transform.position, Quaternion.identity);
             var weapon = spawnWeapon.GetComponent<Weapon>();
             weapon.Initialize(WeaponValue, Hero, null);
             spawnWeapon.SetActive(false);
@@ -20,18 +20,19 @@ public class GunSpawner : WeaponSpawner
 
     public override IEnumerator SpawnWeapon()
     {
+        yield return new WaitUntil(() => Hero);
         for (var index = 0; index < weapons.Count; index++)
         {
             var weapon = weapons[index];
             var spawnWeapon = weapon.gameObject;
             if (Hero) transform.rotation = Hero.transform.rotation;
-            SetupPosition(spawnWeapon.transform, index);
             spawnWeapon.SetActive(true);
+            SetupPosition(spawnWeapon.transform, index);
             yield return new WaitForSeconds(time);
         }
     }
 
-    public override void CheckTimeSpawn()
+    protected override void CheckTimeSpawn()
     {
         SpawnTime -= Time.deltaTime;
         if (SpawnTime > 0) return;

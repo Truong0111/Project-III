@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class WeaponSpawner : MonoBehaviour
 {
-    public WeaponValue WeaponValue { get; protected set; }
+    protected WeaponValue WeaponValue { get; set; }
 
     public List<Weapon> weapons = new();
 
-    public Hero Hero { get; set; }
+    protected Hero Hero { get; set; }
 
-    public GameObject Prefab { get; set; }
-    public int Count { get; set; }
-    public float SpawnTime { get; set; }
+    protected GameObject Prefab { get; set; }
+    protected int Count { get; set; }
+    protected float SpawnTime { get; set; }
 
     public virtual void Initialize(WeaponValue value, Hero hero)
     {
@@ -27,12 +27,8 @@ public class WeaponSpawner : MonoBehaviour
 
     protected virtual void Update()
     {
-        CheckTimeSpawn();
         if (Hero) transform.position = Hero.transform.position;
-    }
-
-    public virtual void SpawnSetup()
-    {
+        CheckTimeSpawn();
     }
 
     [Button]
@@ -40,7 +36,7 @@ public class WeaponSpawner : MonoBehaviour
     {
         for (var index = 0; index < newCount; index++)
         {
-            var spawnWeapon = SimplePool.Spawn(Prefab, Vector3.zero, Quaternion.identity);
+            var spawnWeapon = SimplePool.Spawn(Prefab, transform.position, Quaternion.identity);
             var weapon = spawnWeapon.GetComponent<Weapon>();
             spawnWeapon.SetActive(false);
             weapon.Initialize(WeaponValue, Hero, transform);
@@ -50,7 +46,7 @@ public class WeaponSpawner : MonoBehaviour
         Count += newCount;
     }
 
-    public virtual void CheckTimeSpawn()
+    protected virtual void CheckTimeSpawn()
     {
         SpawnTime -= Time.deltaTime;
         if (SpawnTime > 0) return;
@@ -61,9 +57,5 @@ public class WeaponSpawner : MonoBehaviour
     public virtual IEnumerator SpawnWeapon()
     {
         return null;
-    }
-
-    public virtual void SetupPosition()
-    {
     }
 }

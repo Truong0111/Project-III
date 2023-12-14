@@ -723,6 +723,7 @@ MonoBehaviour:
   quitButton: {fileID: 6586704889301545650}
   creditButton: {fileID: 1024034480146603461}
   startEvent: {fileID: 11400000, guid: 315a8ca5efa71844f95dd7855c4887ff, type: 2}
+  menuEvent: {fileID: 11400000, guid: 0f047bc2ce1790f4488894231babd3ce, type: 2}
   powerUpEvent: {fileID: 11400000, guid: 3e2f79b454b023b4dbf1598b5a01d2d1, type: 2}
   settingEvent: {fileID: 11400000, guid: 01337c311a5de7441bf4df4f36c23af9, type: 2}
   quitEvent: {fileID: 11400000, guid: a105be0375559224e9da57003ea986c9, type: 2}
