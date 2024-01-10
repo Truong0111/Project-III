@@ -14,11 +14,9 @@ public class WeaponSpawnController : Singleton<WeaponSpawnController>
     {
         _hero = FindFirstObjectByType<Hero>();
     }
-
-    [Button]
-    private void SpawnWeaponParent(WeaponType type)
+    public WeaponSpawner SpawnWeaponParent(WeaponType type)
     {
-        var weaponParentValue = weaponSo.weapons.Find(x => x.weaponType == type);
+        var weaponParentValue = weaponSo.weaponValues.Find(x => x.weaponType == type);
         var newWeaponParent = new GameObject(weaponParentValue.name)
         {
             transform =
@@ -28,7 +26,7 @@ public class WeaponSpawnController : Singleton<WeaponSpawnController>
             }
         };
 
-        WeaponSpawner weaponSpawnInit = null;
+        WeaponSpawner weaponSpawnInit;
 
         switch (type)
         {
@@ -58,10 +56,17 @@ public class WeaponSpawnController : Singleton<WeaponSpawnController>
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
         if (weaponSpawnInit != null) weaponSpawnInit.Initialize(weaponParentValue,_hero);
+
+        return weaponSpawnInit;
     }
 
     [Button]
     private void DespawnWeaponParent(int id)
     {
+    }
+
+    public void SpawnWeapon(WeaponType type)
+    {
+        
     }
 }

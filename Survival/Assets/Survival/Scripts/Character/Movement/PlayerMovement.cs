@@ -6,6 +6,7 @@ public class PlayerMovement : CharacterMovement
 {
     public override void ApplyMove()
     {
+        if (!CanMove) return;
         var horizontalInput = Input.GetAxisRaw("Horizontal");
         var verticalInput = Input.GetAxisRaw("Vertical");
 

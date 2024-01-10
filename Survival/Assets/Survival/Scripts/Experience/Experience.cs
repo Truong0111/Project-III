@@ -26,7 +26,7 @@ public class Experience : MonoBehaviour
     {
         if (other.TryGetComponent<Hero>(out var hero))
         {
-            hero.Experience += Value;
+            hero.UpdateExperience(Value);
             SimplePool.Despawn(gameObject);
         }
     }

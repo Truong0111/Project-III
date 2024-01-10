@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8100632262439273847}
   - component: {fileID: 6134969011422152997}
+  - component: {fileID: 3410591320408419604}
   m_Layer: 0
   m_Name: InGameUI
   m_TagString: Untagged
@@ -46,6 +47,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2600903791023681561}
   m_CullTransparentMesh: 1
+--- !u!114 &3410591320408419604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600903791023681561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2e7c54582743f41a5461ab9d16129b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startGameEvent: {fileID: 11400000, guid: 315a8ca5efa71844f95dd7855c4887ff, type: 2}
+  pauseGameEvent: {fileID: 11400000, guid: 01ac84e924f84464fb160214d4333ee9, type: 2}
 --- !u!1 &3415531717164487250
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,8 +72,9 @@ GameObject:
   - component: {fileID: 945056604990003457}
   - component: {fileID: 4407479546826813310}
   - component: {fileID: 2741071636843537200}
+  - component: {fileID: 1324833222307536921}
   m_Layer: 0
-  m_Name: HealthBar
+  m_Name: ExperienceBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +139,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1324833222307536921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415531717164487250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17c0aa373a480c49acd93999b57f5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experienceBar: {fileID: 2791971780261947359}
+  playerExperienceChangeEvent: {fileID: 11400000, guid: 6d76493e6932cf44682be822d471f4f5,
+    type: 2}
 --- !u!1 &6579986333979078648
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +225,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

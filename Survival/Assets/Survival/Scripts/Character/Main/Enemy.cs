@@ -53,7 +53,7 @@ public class Enemy : Character
         
         Armor = EnemyValue.armor;
         Speed = EnemyValue.speed;
-        Experience = EnemyValue.experience;
+        // Experience = EnemyValue.experience;
         UpgradePerTime = EnemyValue.upgradePerTime;
         Drop = EnemyValue.drop;
     }

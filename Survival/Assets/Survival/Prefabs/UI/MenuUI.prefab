@@ -728,6 +728,7 @@ MonoBehaviour:
   settingEvent: {fileID: 11400000, guid: 01337c311a5de7441bf4df4f36c23af9, type: 2}
   quitEvent: {fileID: 11400000, guid: a105be0375559224e9da57003ea986c9, type: 2}
   creditEvent: {fileID: 11400000, guid: 117cdd2223b7e7245a8a809127b57bb1, type: 2}
+  loadLevelEvent: {fileID: 11400000, guid: ce13d4b8fbea68948ae3216da5eb8dee, type: 2}
 --- !u!1 &5787121110627141088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7487965911255722314
 RectTransform:
   m_ObjectHideFlags: 0

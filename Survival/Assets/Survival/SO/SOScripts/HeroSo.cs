@@ -17,7 +17,8 @@ public class HeroValue
     public float speed;
     public float experience;
     public float upgradePerTime;
-    public float level;
+    public int level;
+    public WeaponType weaponType;
 }
 [System.Serializable]
 public enum HeroType

@@ -51,6 +51,7 @@ public static class SimplePool {
 				// Add a PoolMember component so we know what pool
 				// we belong to.
 				obj.AddComponent<PoolMember>().myPool = this;
+				LevelManager.Instance.MoveObjectToScene(obj);
 			}
 			else {
 				// Grab the last object in the inactive array

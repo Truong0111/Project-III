@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityAtoms.BaseAtoms;
+using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +23,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private VoidEvent settingEvent;
     [SerializeField] private VoidEvent quitEvent;
     [SerializeField] private VoidEvent creditEvent;
-
+    [SerializeField] private VoidEvent loadLevelEvent;
     private void Awake()
     {
         menuEvent.Register(ShowMenuUI);
@@ -40,7 +42,7 @@ public class MenuUI : MonoBehaviour
 
     private void StartGame()
     {
-        startEvent.Raise();
+        loadLevelEvent.Raise();
         HideMenuUI();
     }
 
@@ -58,7 +60,12 @@ public class MenuUI : MonoBehaviour
 
     private void Quit()
     {
-        quitEvent.Raise();
+        // quitEvent.Raise();
+        Application.Quit();
+#if UNITY_EDITOR
+        EditorSceneManager.SaveOpenScenes();
+        EditorApplication.Exit(0);
+#endif
         HideMenuUI();
     }
 

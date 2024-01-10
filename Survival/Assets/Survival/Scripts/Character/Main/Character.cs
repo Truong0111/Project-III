@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    
+    
     [ShowInInspector]
     protected int ID { get; set; }
     
     [ShowInInspector]
     public float Health { get; set; }
+    
+    [ShowInInspector]
+    public float MaxHealth { get; set; }
     
     [ShowInInspector]
     public float Damage { get; set; }

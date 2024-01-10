@@ -6,3 +6,4 @@ public class PlayerInteraction : MonoBehaviour
 {
     private Hero Hero => gameObject.GetComponentInParent<Hero>();
 }
+    

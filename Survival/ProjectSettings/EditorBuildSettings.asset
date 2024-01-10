@@ -4,7 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Survival/Scenes/MasterScene.unity
+    guid: 27ad12661b708ed469ef84b99d32a54c
+  - enabled: 1
+    path: Assets/Survival/Scenes/TestScene.unity
+    guid: 14b755f0281c6734e900d9d4806b431f
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e3dfe5242b2e12d4a8cda6cfaeea0478,
+      type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: c0d180d27f474c546b8ce33fab2d29ab, type: 2}

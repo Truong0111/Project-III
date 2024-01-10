@@ -320,6 +320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2624f414e23b8bd429c30d92f2c847d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopGameEvent: {fileID: 11400000, guid: 38fd8550060b33f468d16b79e143fa1a, type: 2}
+  pauseGameEvent: {fileID: 11400000, guid: 01ac84e924f84464fb160214d4333ee9, type: 2}
+  continueGameEvent: {fileID: 11400000, guid: a3ef2fce7a7d47e4584f041da98d6309, type: 2}
   <MoveSpeed>k__BackingField: 4
 --- !u!114 &3533807985372710150
 MonoBehaviour:

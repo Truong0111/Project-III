@@ -1,19 +1,40 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    [SerializeField] private VoidEvent stopGameEvent;
+    [SerializeField] private VoidEvent pauseGameEvent;
+    [SerializeField] private VoidEvent continueGameEvent;
+    
     protected Character Character;
     [field: SerializeField] public float MoveSpeed { get; private set; }
     protected Vector3 Direction;
 
+    public bool CanMove { get; set; } = true;
+    
     public virtual void Awake()
     {
         Character = GetComponent<Character>();
+        
+        stopGameEvent.Register(StopMove);
+        pauseGameEvent.Register(StopMove);
+        continueGameEvent.Register(ContinueMove);
     }
 
+    private void OnDestroy()
+    {
+        stopGameEvent.Unregister(StopMove);
+        pauseGameEvent.Unregister(StopMove);
+        continueGameEvent.Unregister(ContinueMove);
+    }
+
+    public void StopMove() => CanMove = false;
+    public void ContinueMove() => CanMove = true;
+    
     public virtual void Start()
     {
         
@@ -35,7 +56,7 @@ public class CharacterMovement : MonoBehaviour
     {
         
     }
-
+    
 
     private const float RotationSpeed = 180f;
 

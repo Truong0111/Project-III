@@ -1,0 +1,378 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c783146ae36cf2745ac2b66ab2da87e8, type: 3}
+  m_Name: LevelSo
+  m_EditorClassIdentifier: 
+  heroExperiencePerLevels:
+  - level: 0
+    experience: 0
+  - level: 1
+    experience: 40
+  - level: 2
+    experience: 120
+  - level: 3
+    experience: 240
+  - level: 4
+    experience: 400
+  - level: 5
+    experience: 600
+  - level: 6
+    experience: 840
+  - level: 7
+    experience: 1120
+  - level: 8
+    experience: 1440
+  - level: 9
+    experience: 1800
+  - level: 10
+    experience: 2200
+  - level: 11
+    experience: 2640
+  - level: 12
+    experience: 3120
+  - level: 13
+    experience: 3640
+  - level: 14
+    experience: 4200
+  - level: 15
+    experience: 4800
+  - level: 16
+    experience: 5440
+  - level: 17
+    experience: 6120
+  - level: 18
+    experience: 6840
+  - level: 19
+    experience: 7600
+  - level: 20
+    experience: 8400
+  - level: 21
+    experience: 9240
+  - level: 22
+    experience: 10120
+  - level: 23
+    experience: 11040
+  - level: 24
+    experience: 12000
+  - level: 25
+    experience: 13000
+  - level: 26
+    experience: 14040
+  - level: 27
+    experience: 15120
+  - level: 28
+    experience: 16240
+  - level: 29
+    experience: 17400
+  - level: 30
+    experience: 18600
+  - level: 31
+    experience: 19840
+  - level: 32
+    experience: 21120
+  - level: 33
+    experience: 22440
+  - level: 34
+    experience: 23800
+  - level: 35
+    experience: 25200
+  - level: 36
+    experience: 26640
+  - level: 37
+    experience: 28120
+  - level: 38
+    experience: 29640
+  - level: 39
+    experience: 31200
+  - level: 40
+    experience: 32800
+  - level: 41
+    experience: 34440
+  - level: 42
+    experience: 36120
+  - level: 43
+    experience: 37840
+  - level: 44
+    experience: 39600
+  - level: 45
+    experience: 41400
+  - level: 46
+    experience: 43240
+  - level: 47
+    experience: 45120
+  - level: 48
+    experience: 47040
+  - level: 49
+    experience: 49000
+  - level: 50
+    experience: 51000
+  - level: 51
+    experience: 53040
+  - level: 52
+    experience: 55120
+  - level: 53
+    experience: 57240
+  - level: 54
+    experience: 59400
+  - level: 55
+    experience: 61600
+  - level: 56
+    experience: 63840
+  - level: 57
+    experience: 66120
+  - level: 58
+    experience: 68440
+  - level: 59
+    experience: 70800
+  - level: 60
+    experience: 73200
+  - level: 61
+    experience: 75640
+  - level: 62
+    experience: 78120
+  - level: 63
+    experience: 80640
+  - level: 64
+    experience: 83200
+  - level: 65
+    experience: 85800
+  - level: 66
+    experience: 88440
+  - level: 67
+    experience: 91120
+  - level: 68
+    experience: 93840
+  - level: 69
+    experience: 96600
+  - level: 70
+    experience: 99400
+  - level: 71
+    experience: 102240
+  - level: 72
+    experience: 105120
+  - level: 73
+    experience: 108040
+  - level: 74
+    experience: 111000
+  - level: 75
+    experience: 114000
+  - level: 76
+    experience: 117040
+  - level: 77
+    experience: 120120
+  - level: 78
+    experience: 123240
+  - level: 79
+    experience: 126400
+  - level: 80
+    experience: 129600
+  - level: 81
+    experience: 132840
+  - level: 82
+    experience: 136120
+  - level: 83
+    experience: 139440
+  - level: 84
+    experience: 142800
+  - level: 85
+    experience: 146200
+  - level: 86
+    experience: 149640
+  - level: 87
+    experience: 153120
+  - level: 88
+    experience: 156640
+  - level: 89
+    experience: 160200
+  - level: 90
+    experience: 163800
+  - level: 91
+    experience: 167440
+  - level: 92
+    experience: 171120
+  - level: 93
+    experience: 174840
+  - level: 94
+    experience: 178600
+  - level: 95
+    experience: 182400
+  - level: 96
+    experience: 186240
+  - level: 97
+    experience: 190120
+  - level: 98
+    experience: 194040
+  - level: 99
+    experience: 198000
+  - level: 100
+    experience: 202000
+  - level: 101
+    experience: 206040
+  - level: 102
+    experience: 210120
+  - level: 103
+    experience: 214240
+  - level: 104
+    experience: 218400
+  - level: 105
+    experience: 222600
+  - level: 106
+    experience: 226840
+  - level: 107
+    experience: 231120
+  - level: 108
+    experience: 235440
+  - level: 109
+    experience: 239800
+  - level: 110
+    experience: 244200
+  - level: 111
+    experience: 248640
+  - level: 112
+    experience: 253120
+  - level: 113
+    experience: 257640
+  - level: 114
+    experience: 262200
+  - level: 115
+    experience: 266800
+  - level: 116
+    experience: 271440
+  - level: 117
+    experience: 276120
+  - level: 118
+    experience: 280840
+  - level: 119
+    experience: 285600
+  - level: 120
+    experience: 290400
+  - level: 121
+    experience: 295240
+  - level: 122
+    experience: 300120
+  - level: 123
+    experience: 305040
+  - level: 124
+    experience: 310000
+  - level: 125
+    experience: 315000
+  - level: 126
+    experience: 320040
+  - level: 127
+    experience: 325120
+  - level: 128
+    experience: 330240
+  - level: 129
+    experience: 335400
+  - level: 130
+    experience: 340600
+  - level: 131
+    experience: 345840
+  - level: 132
+    experience: 351120
+  - level: 133
+    experience: 356440
+  - level: 134
+    experience: 361800
+  - level: 135
+    experience: 367200
+  - level: 136
+    experience: 372640
+  - level: 137
+    experience: 378120
+  - level: 138
+    experience: 383640
+  - level: 139
+    experience: 389200
+  - level: 140
+    experience: 394800
+  - level: 141
+    experience: 400440
+  - level: 142
+    experience: 406120
+  - level: 143
+    experience: 411840
+  - level: 144
+    experience: 417600
+  - level: 145
+    experience: 423400
+  - level: 146
+    experience: 429240
+  - level: 147
+    experience: 435120
+  - level: 148
+    experience: 441040
+  - level: 149
+    experience: 447000
+  enemyExperiencePerLevels:
+  - level: 0
+    experience: 0
+  - level: 1
+    experience: 10
+  - level: 2
+    experience: 20
+  - level: 3
+    experience: 30
+  - level: 4
+    experience: 40
+  - level: 5
+    experience: 50
+  - level: 6
+    experience: 60
+  - level: 7
+    experience: 70
+  - level: 8
+    experience: 80
+  - level: 9
+    experience: 90
+  - level: 10
+    experience: 100
+  - level: 11
+    experience: 110
+  - level: 12
+    experience: 120
+  - level: 13
+    experience: 130
+  - level: 14
+    experience: 140
+  - level: 15
+    experience: 150
+  - level: 16
+    experience: 160
+  - level: 17
+    experience: 170
+  - level: 18
+    experience: 180
+  - level: 19
+    experience: 190
+  - level: 20
+    experience: 200
+  - level: 21
+    experience: 210
+  - level: 22
+    experience: 220
+  - level: 23
+    experience: 230
+  - level: 24
+    experience: 240
+  - level: 25
+    experience: 250
+  - level: 26
+    experience: 260
+  - level: 27
+    experience: 270
+  - level: 28
+    experience: 280
+  - level: 29
+    experience: 290
+  - level: 30
+    experience: 300

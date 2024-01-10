@@ -6,14 +6,13 @@ using UnityEngine;
 
 public class WeaponSpawner : MonoBehaviour
 {
-    protected WeaponValue WeaponValue { get; set; }
-
+    public WeaponValue WeaponValue { get; private set; }
     public List<Weapon> weapons = new();
 
-    protected Hero Hero { get; set; }
-
-    protected GameObject Prefab { get; set; }
-    protected int Count { get; set; }
+    public Hero Hero { get; set; }
+    public GameObject Prefab { get; set; }
+    public int Count { get; set; }
+    public int Level { get; set; }
     protected float SpawnTime { get; set; }
 
     public virtual void Initialize(WeaponValue value, Hero hero)
@@ -22,6 +21,7 @@ public class WeaponSpawner : MonoBehaviour
         Hero = hero;
         Prefab = value.prefab;
         SpawnTime = 0;
+        Level = 0;
         AddWeapon(value.count);
     }
 
@@ -30,8 +30,6 @@ public class WeaponSpawner : MonoBehaviour
         if (Hero) transform.position = Hero.transform.position;
         CheckTimeSpawn();
     }
-
-    [Button]
     public virtual void AddWeapon(int newCount)
     {
         for (var index = 0; index < newCount; index++)
@@ -57,5 +55,10 @@ public class WeaponSpawner : MonoBehaviour
     public virtual IEnumerator SpawnWeapon()
     {
         return null;
+    }
+
+    public virtual void UpLevel()
+    {
+        Level += 1;
     }
 }
