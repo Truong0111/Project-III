@@ -10,10 +10,6 @@ public class Bullet : Weapon
     {
         WeaponValue = value;
         Hero = hero;
-        
-        Damage = value.damage;
-        Speed = value.speed;
-        Duration = value.duration;
     }
     
     protected override void ApplyMove()

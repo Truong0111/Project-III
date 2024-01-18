@@ -7,6 +7,7 @@ public class PikeSpawner : WeaponSpawner
 {
     public override IEnumerator SpawnWeapon()
     {
+        if(!CanSpawn) yield break;
         yield return new WaitUntil(() => Hero);
         transform.rotation = Hero.transform.rotation;
         foreach (var weapon in weapons)

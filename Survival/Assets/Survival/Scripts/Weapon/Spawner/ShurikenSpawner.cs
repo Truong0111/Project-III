@@ -8,7 +8,7 @@ public class ShurikenSpawner : WeaponSpawner
     {
         for (var i = 0; i < newCount; i++)
         {
-            var spawnWeapon = SimplePool.Spawn(Prefab, transform.position, Quaternion.identity);
+            var spawnWeapon = SimplePool.Spawn(WeaponValue.prefab, transform.position, Quaternion.identity);
             var weapon = spawnWeapon.GetComponent<Weapon>();
             weapon.Initialize(WeaponValue, Hero, null);
             spawnWeapon.SetActive(false);
@@ -18,6 +18,7 @@ public class ShurikenSpawner : WeaponSpawner
 
     public override IEnumerator SpawnWeapon()
     {
+        if(!CanSpawn) yield break;
         yield return new WaitUntil(() => Hero);
         for (var index = 0; index < weapons.Count; index++)
         {

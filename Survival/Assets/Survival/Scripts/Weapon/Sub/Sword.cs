@@ -11,19 +11,13 @@ public class Sword : Weapon
 
     protected override void CheckDeSpawn()
     {
-        Duration -= Time.deltaTime;
-        if (Duration > 0) return;
+        DurationRemain -= Time.deltaTime;
+        if (DurationRemain > 0) return;
         Despawn();
     }
 
     public override void ResetValue()
     {
-        if (WeaponValue == null)
-        {
-            Duration = 9999f;
-            return;
-        }
-
-        Duration = WeaponValue.duration;
+        DurationRemain = WeaponValue.duration;
     }
 }

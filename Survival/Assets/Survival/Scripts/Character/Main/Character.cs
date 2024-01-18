@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    
+    [Title("Animator")] 
+    [field: SerializeField] public Animator Animator { get; set; }
     
     [ShowInInspector]
     protected int ID { get; set; }

@@ -10,7 +10,7 @@ public class LookAtCamera : MonoBehaviour
     {
         var camera = Camera.main;
 
-        if (_camera == null)
+        if (camera == null)
         {
             if (subCamera != null)
             {

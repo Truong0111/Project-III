@@ -8,13 +8,18 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawnController : Singleton<EnemySpawnController>
 {
+    [Title("Ref")]
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private float range = 15f;
+    
+    [Title("Event")]
     [SerializeField] private VoidEvent startGameEvent;
     [SerializeField] private VoidEvent stopGameEvent;
     [SerializeField] private VoidEvent pauseGameEvent;
     [SerializeField] private VoidEvent continueGameEvent;
-    [SerializeField] private EnemySo enemySo;
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private float range = 15f;
+    [SerializeField] private VoidEvent loseEvent;
+    [SerializeField] private VoidEvent winEvent;
+    
     private Transform _heroTransform;
     
     private static float ScreenWidth => Screen.width;
@@ -27,6 +32,8 @@ public class EnemySpawnController : Singleton<EnemySpawnController>
         stopGameEvent.Register(StopSpawnEnemy);
         pauseGameEvent.Register(StopSpawnEnemy);
         continueGameEvent.Register(ContinueSpawnEnemy);
+        loseEvent.Register(StopSpawnEnemy);
+        winEvent.Register(StopSpawnEnemy);
     }
 
     public void OnDisable()
@@ -35,6 +42,8 @@ public class EnemySpawnController : Singleton<EnemySpawnController>
         stopGameEvent.Unregister(StopSpawnEnemy);
         pauseGameEvent.Unregister(StopSpawnEnemy);
         continueGameEvent.Unregister(ContinueSpawnEnemy);
+        loseEvent.Unregister(StopSpawnEnemy);
+        winEvent.Unregister(StopSpawnEnemy);
     }
 
     private IEnumerator Start()
@@ -53,7 +62,7 @@ public class EnemySpawnController : Singleton<EnemySpawnController>
     private void StopSpawnEnemy()
     {
         CanSpawn = false;
-        StopCoroutine(SpawnEnemy());
+        // StopCoroutine(SpawnEnemy());
     }
     
     private void ContinueSpawnEnemy()
@@ -66,11 +75,11 @@ public class EnemySpawnController : Singleton<EnemySpawnController>
     {
         while (true)
         {
-            if (!CanSpawn) break;
             if(!_heroTransform) yield break;
             var spawnPos = RandomOnUnitCircle(range);
 
             yield return new WaitForSeconds(2f);
+            if (!CanSpawn) yield break;
             var spawnPosition = _heroTransform.position + new Vector3(spawnPos.x, 0f, spawnPos.y);
             var spawnRotation = Quaternion.identity;
             var enemySpawn = SimplePool.Spawn(enemyPrefab, spawnPosition, spawnRotation);

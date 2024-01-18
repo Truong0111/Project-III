@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponInteraction : MonoBehaviour
@@ -14,20 +13,26 @@ public class WeaponInteraction : MonoBehaviour
         if (!weapon) weapon = GetComponentInParent<Weapon>();
     }
 
-    private void Start()
-    {
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Enemy>(out var enemy))
         {
             var damage = weapon.Damage;
-            enemy.Health -= damage;
+            enemy.Health -= damage - enemy.Armor;
             enemy.CheckEnemyDie();
-            if (TryGetComponent<EnergyBlast>(out var energyBlast))
+        }
+    }
+
+    private IEnumerator OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent<Enemy>(out var enemy))
+        {
+            if (weapon.WeaponValue.weaponType == WeaponType.Shuriken)
             {
-                energyBlast.ResetValue();
+                var damage = weapon.Damage;
+                enemy.Health -= damage;
+                enemy.CheckEnemyDie();
+                yield return new WaitForSeconds(0.25f);
             }
         }
     }

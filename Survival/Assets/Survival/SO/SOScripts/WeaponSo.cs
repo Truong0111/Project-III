@@ -28,6 +28,26 @@ public class WeaponValue
     public float speed;
     public float duration;
 
+    public Sprite sprite;
+
+    public void Init(WeaponValue weaponValue)
+    {
+        prefab = weaponValue.prefab;
+        id = weaponValue.id;
+        weaponType = weaponValue.weaponType;
+        name = weaponValue.name;
+
+        level = weaponValue.level;
+
+        count = weaponValue.count;
+        spawnTime = weaponValue.spawnTime;
+
+        damage = weaponValue.damage;
+        speed = weaponValue.speed;
+        duration = weaponValue.duration;
+
+        sprite = weaponValue.sprite;
+    }
 }
 
 [EnumToggleButtons]

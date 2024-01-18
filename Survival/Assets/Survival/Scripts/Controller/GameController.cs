@@ -6,12 +6,10 @@ using UnityEngine;
 
 public class GameController : Singleton<GameController>
 {
-    [SerializeField] private VoidEvent startGameEvent;
     public Hero Hero { get; set; }
-
+    public int CurrentTime { get; set; }
     public IEnumerator Start()
     {
         yield return new WaitUntil(() => Hero);
-        startGameEvent.Raise();
     }
 }

@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private VoidEvent stopGameEvent;
     [SerializeField] private VoidEvent pauseGameEvent;
     [SerializeField] private VoidEvent continueGameEvent;
+    [SerializeField] private VoidEvent winEvent;
     
     protected Character Character;
     [field: SerializeField] public float MoveSpeed { get; private set; }
@@ -23,6 +24,7 @@ public class CharacterMovement : MonoBehaviour
         stopGameEvent.Register(StopMove);
         pauseGameEvent.Register(StopMove);
         continueGameEvent.Register(ContinueMove);
+        winEvent.Register(StopMove);
     }
 
     private void OnDestroy()
@@ -30,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
         stopGameEvent.Unregister(StopMove);
         pauseGameEvent.Unregister(StopMove);
         continueGameEvent.Unregister(ContinueMove);
+        winEvent.Unregister(StopMove);
     }
 
     public void StopMove() => CanMove = false;

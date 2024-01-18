@@ -51,31 +51,37 @@ public class ChooseWeaponUI : Singleton<ChooseWeaponUI>
     private void RandomChoose()
     {
         var weaponValues = new List<WeaponValue>();
-        var weaponSpawners = new List<WeaponSpawner>();
+        
         foreach (var weaponsValue in weaponSo.weaponValues)
         {
-            weaponValues.Add(weaponsValue);
+            var weaponValue = new WeaponValue();
+            weaponValue.Init(weaponsValue);
+            weaponValues.Add(weaponValue);
         }
 
         foreach (var weaponSpawner in GameController.Instance.Hero.WeaponSpawners)
         {
-            if (weaponSpawner.WeaponValue.level == 7)
+            if (weaponSpawner.WeaponValue.level >= 7)
             {
                 weaponValues.Remove(weaponSpawner.WeaponValue);
-                continue;
             }
-
-            weaponSpawners.Add(weaponSpawner);
-            // weaponValues.Add(weaponSpawner.WeaponValue);
+            
+            foreach (var weaponValue in weaponValues)
+            {
+                if (weaponValue.weaponType == weaponSpawner.WeaponValue.weaponType)
+                {
+                    weaponValue.level = weaponSpawner.WeaponValue.level;
+                }
+            }
         }
-
+        
         if (weaponValues.Count <= 0)
         {
             AddCoin(chooseWeaponButtons[0]);
             AddHealth(chooseWeaponButtons[1]);
         }
 
-        //Random index weaponValues
+        //Random index weaponSpawners
         var tmp = new List<int>();
         for (var i = 0; i < chooseWeaponButtons.Count; i++)
         {
@@ -86,22 +92,17 @@ public class ChooseWeaponUI : Singleton<ChooseWeaponUI>
             }
 
             var rand = Except.GetWeaponIndexExcept(tmp, 0, weaponValues.Count);
-            var level = 1;
-            if (weaponSpawners.Count > 0)
-            {
-                level = weaponSpawners.Find(x => x.WeaponValue == weaponValues[rand]).Level;
-            }
-
-            AddWeapon(chooseWeaponButtons[i], weaponValues[rand], level);
+            
+            AddWeapon(chooseWeaponButtons[i], weaponValues[rand]);
             tmp.Add(rand);
         }
     }
 
-    private void AddWeapon(ChooseWeaponButton chooseWeaponButton, WeaponValue weaponValue, int level)
+    private void AddWeapon(ChooseWeaponButton chooseWeaponButton, WeaponValue weaponValue)
     {
         chooseWeaponButton.ChooseWeaponType = ChooseWeaponType.Weapon;
         chooseWeaponButton.WeaponValue = weaponValue;
-        chooseWeaponButton.Level = level;
+        chooseWeaponButton.Level = weaponValue.level;
         chooseWeaponButton.Init();
     }
 

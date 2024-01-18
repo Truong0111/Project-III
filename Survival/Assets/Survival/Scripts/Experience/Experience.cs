@@ -9,25 +9,38 @@ public class Experience : MonoBehaviour
 {
     [ShowInInspector]
     public float Value { get; set; }
+
+    private static Hero Hero => GameController.Instance.Hero;
+
+    private void Update()
+    {
+        transform.RotateAround(transform.position, Vector3.up, 60f * Time.deltaTime);
+    }
+
+    private IEnumerator MoveToHero(Action onEnd = null)
+    {
+        while (Vector3.Distance(transform.position, Hero.transform.position) > 0.01f)
+        {
+            var direction = Hero.transform.position - transform.position;
+            
+            transform.position += direction.normalized * (10f * Time.deltaTime);
+            yield return null;
+        }
+        
+        onEnd?.Invoke();
+    }
+
+    private void HeroCollectExperience()
+    {
+        Hero.UpdateExperience(Value);
+        SimplePool.Despawn(gameObject);
+    }
     
-    private void OnEnable()
-    {
-        transform.DOLocalRotate(new Vector3(45f, 360f, 45f), 0.5f)
-            .SetEase(Ease.Linear)
-            .SetLoops(-1, LoopType.Incremental);
-    }
-
-    private void OnDestroy()
-    {
-        transform.DOKill();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Hero>(out var hero))
         {
-            hero.UpdateExperience(Value);
-            SimplePool.Despawn(gameObject);
+            StartCoroutine(MoveToHero(HeroCollectExperience));
         }
     }
 }

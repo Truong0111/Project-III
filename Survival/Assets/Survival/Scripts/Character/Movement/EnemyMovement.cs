@@ -21,7 +21,7 @@ public class EnemyMovement : CharacterMovement
 
     public override void ApplyMove()
     {
-        if(!CanMove) return; 
+        if(!CanMove) return;
         Direction = _target.position - transform.position;
         transform.position 
             = Vector3.MoveTowards(transform.position, _target.position, MoveSpeed * Time.fixedDeltaTime);

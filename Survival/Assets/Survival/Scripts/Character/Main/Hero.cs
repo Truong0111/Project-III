@@ -7,10 +7,13 @@ using UnityEngine;
 
 public class Hero : Character
 {
-    [SerializeField] private HeroSo heroSo;
+    [Title("SO")] [SerializeField] private HeroSo heroSo;
     [SerializeField] private LevelSo levelSo;
-    [SerializeField] private FloatEvent playerHeathChangeEvent;
+
+    [Title("Event")] [SerializeField] private FloatEvent playerHeathChangeEvent;
     [SerializeField] private FloatEvent playerExperienceChangeEvent;
+    [SerializeField] private VoidEvent startGameEvent;
+    [SerializeField] private VoidEvent winEvent;
     [SerializeField] private VoidEvent loseEvent;
     [SerializeField] private VoidEvent levelUpEvent;
     [SerializeField] private VoidEvent stopGameEvent;
@@ -18,31 +21,53 @@ public class Hero : Character
     [SerializeField] private VoidEvent continueGameEvent;
 
     [ShowInInspector] private float UpgradePerTime { get; set; }
-    [ShowInInspector] private int Level { get; set; }
+    [ShowInInspector] public int Level { get; set; }
 
-    public List<WeaponSpawner> WeaponSpawners { get; set; } = new();
+    [ShowInInspector] public List<WeaponSpawner> WeaponSpawners { get; set; } = new();
     [ShowInInspector] public int RemainChooseWeapon { get; set; }
     private HeroValue _heroValue;
     private bool IsDead() => Health <= 0;
     private bool _canCheck = true;
+
     private void Awake()
     {
+        winEvent.Register(NoCheck);
+        loseEvent.Register(NoCheck);
         stopGameEvent.Register(NoCheck);
         pauseGameEvent.Register(NoCheck);
+        startGameEvent.Register(Check);
         continueGameEvent.Register(Check);
         ID = 0;
     }
 
     private void OnDestroy()
     {
+        winEvent.Unregister(NoCheck);
+        loseEvent.Unregister(NoCheck);
         stopGameEvent.Unregister(NoCheck);
         pauseGameEvent.Unregister(NoCheck);
+        startGameEvent.Unregister(Check);
         continueGameEvent.Unregister(Check);
     }
 
-    private void NoCheck() => _canCheck = false;
-    private void Check() => _canCheck = true;
-    
+    private void NoCheck()
+    {
+        _canCheck = false;
+        foreach (var weaponSpawner in WeaponSpawners)
+        {
+            weaponSpawner.CanSpawn = false;
+        }
+    }
+
+    private void Check()
+    {
+        _canCheck = true;
+        foreach (var weaponSpawner in WeaponSpawners)
+        {
+            weaponSpawner.CanSpawn = true;
+        }
+    }
+
     private void Start()
     {
         _heroValue = heroSo.heroValues[ID];
@@ -53,7 +78,7 @@ public class Hero : Character
 
     private void Update()
     {
-        if(!_canCheck) return;
+        if (!_canCheck) return;
         CheckHeroDie();
     }
 
@@ -91,10 +116,14 @@ public class Hero : Character
         playerExperienceChangeEvent.Raise(value);
         CheckLevel();
     }
-    
+
     public void CheckDead()
     {
-        if (IsDead()) loseEvent.Raise();
+        if (IsDead())
+        {
+            Animator.SetTrigger(AnimatorConstant.DieHashed);
+            loseEvent.Raise();
+        }
     }
 
     public void CheckLevel()
@@ -106,19 +135,24 @@ public class Hero : Character
             Experience -= needExperience;
             Level += 1;
             RemainChooseWeapon += 1;
-        }
-
-        if (RemainChooseWeapon > 0)
-        {
             levelUpEvent.Raise();
         }
     }
 
-    [Button]
     public void AddWeapon(WeaponType type)
     {
-        var weaponSpawner = WeaponSpawners.Find(x => x.WeaponValue.weaponType == type);
-        if(weaponSpawner) weaponSpawner.UpLevel();
-        else WeaponSpawners.Add(WeaponSpawnController.Instance.SpawnWeaponParent(type));
+        foreach (var weaponSpawner in WeaponSpawners)
+        {
+            if (weaponSpawner.WeaponValue.weaponType == type)
+            {
+                
+                weaponSpawner.UpLevel();
+                WeaponGroup.Instance.UpdateWeaponShowUI();
+                return;
+            }
+        }
+        var newSpawner = WeaponSpawnController.Instance.SpawnWeaponParent(type);
+        WeaponSpawners.Add(newSpawner);
+        WeaponGroup.Instance.AddWeaponShowUI(newSpawner);
     }
 }

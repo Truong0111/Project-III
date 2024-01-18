@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class WeaponSpawnController : Singleton<WeaponSpawnController>
@@ -10,9 +8,10 @@ public class WeaponSpawnController : Singleton<WeaponSpawnController>
 
     private Hero _hero;
 
-    private void Start()
+    private IEnumerator Start()
     {
-        _hero = FindFirstObjectByType<Hero>();
+        yield return new WaitUntil(() => GameController.Instance.Hero);
+        _hero = GameController.Instance.Hero;
     }
     public WeaponSpawner SpawnWeaponParent(WeaponType type)
     {
@@ -25,7 +24,9 @@ public class WeaponSpawnController : Singleton<WeaponSpawnController>
                 rotation = Quaternion.identity
             }
         };
-
+        
+        LevelManager.Instance.MoveObjectToScene(newWeaponParent);
+        
         WeaponSpawner weaponSpawnInit;
 
         switch (type)
@@ -56,17 +57,6 @@ public class WeaponSpawnController : Singleton<WeaponSpawnController>
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
         if (weaponSpawnInit != null) weaponSpawnInit.Initialize(weaponParentValue,_hero);
-
         return weaponSpawnInit;
-    }
-
-    [Button]
-    private void DespawnWeaponParent(int id)
-    {
-    }
-
-    public void SpawnWeapon(WeaponType type)
-    {
-        
     }
 }

@@ -3,7 +3,14 @@ guid: 1959352134e89f94f865e3970770f961
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - startGameEvent: {fileID: 11400000, guid: 315a8ca5efa71844f95dd7855c4887ff, type: 2}
+  - stopGameEvent: {fileID: 11400000, guid: 38fd8550060b33f468d16b79e143fa1a, type: 2}
+  - loseEvent: {fileID: 11400000, guid: a93a33e19966b07488f25ebd1c0d3f0d, type: 2}
+  - winEvent: {fileID: 11400000, guid: 27bf38a94e36b05488a8f0bd2eb432ad, type: 2}
+  - pauseGameEvent: {fileID: 11400000, guid: 01ac84e924f84464fb160214d4333ee9, type: 2}
+  - resumeGameEvent: {fileID: 11400000, guid: a3ef2fce7a7d47e4584f041da98d6309, type: 2}
+  - menuEvent: {fileID: 11400000, guid: 0f047bc2ce1790f4488894231babd3ce, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

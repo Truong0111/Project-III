@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SwordSpawner : WeaponSpawner
 {
-    
     public override IEnumerator SpawnWeapon()
     {
+        if(!CanSpawn) yield break;
         yield return new WaitUntil(() => Hero);
         var weaponCount = weapons.Count;
 
@@ -17,7 +17,7 @@ public class SwordSpawner : WeaponSpawner
             spawnWeapon.SetActive(true);
             SetupPosition(spawnWeapon.transform, weaponCount, index);
         }
-        yield return new WaitForSeconds(0f);
+        yield return null;
     }
 
     private void SetupPosition(Transform objTransform, int count, int index)

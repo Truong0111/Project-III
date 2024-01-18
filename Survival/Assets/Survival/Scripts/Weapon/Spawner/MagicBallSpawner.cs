@@ -8,6 +8,7 @@ public class MagicBallSpawner : WeaponSpawner
     
     public override IEnumerator SpawnWeapon()
     {
+        if(!CanSpawn) yield break;
         yield return new WaitUntil(() => Hero);
         var weaponCount = weapons.Count;
         

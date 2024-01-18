@@ -25,7 +25,7 @@ public class EnemyInteraction : MonoBehaviour
         if (other.TryGetComponent<Hero>(out var hero))
         {
             if (_timePerPushDamage > 0) return;
-            hero.UpdateHealth(-Enemy.Damage);
+            hero.UpdateHealth(-(Enemy.Damage + hero.Armor));
             _timePerPushDamage = timePerPushDamage;
         }
     }

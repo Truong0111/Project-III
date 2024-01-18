@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckEnemyInRange : MonoBehaviour
+public class CheckEnemyInRange : Singleton<CheckEnemyInRange>
 {
     [SerializeField] private ListObjectSo listObjectSo;
     public EnergyBlastSpawner EnergyBlastSpawner { get; set; }
-
-    private bool _isEnergyBlastSpawnerActive;
-
+    
     private List<Enemy> Enemies
     {
         get => listObjectSo.enemyInRanges;
@@ -23,13 +21,7 @@ public class CheckEnemyInRange : MonoBehaviour
 
     private void Update()
     {
-        if (Enemies.Count <= 0)
-        {
-            _isEnergyBlastSpawnerActive = false;
-            return;
-        }
-        if (_isEnergyBlastSpawnerActive) return;
+        if (Enemies.Count <= 0) return;
         StartCoroutine(EnergyBlastSpawner.SpawnWeapon());
-        _isEnergyBlastSpawnerActive = true;
     }
 }

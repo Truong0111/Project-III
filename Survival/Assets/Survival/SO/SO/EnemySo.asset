@@ -19,18 +19,18 @@ MonoBehaviour:
     health: 10
     damage: 2
     armor: 0
-    speed: 3
+    speed: 2
     experience: 10
-    upgradePerTime: 0
-    drop: 0
+    upgradePerTime: 0.1
+    drop: 10
   - type: 0
     id: 1
     name: 
     health: 20
     damage: 2
     armor: 1
-    speed: 3
+    speed: 2
     experience: 10
-    upgradePerTime: 0
-    drop: 0
+    upgradePerTime: 0.1
+    drop: 10
   enemyTurns: []

@@ -2,26 +2,34 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class WeaponSpawner : MonoBehaviour
 {
-    public WeaponValue WeaponValue { get; private set; }
+    public WeaponValue WeaponValue { get; private set; } = new();
     public List<Weapon> weapons = new();
 
-    public Hero Hero { get; set; }
-    public GameObject Prefab { get; set; }
-    public int Count { get; set; }
-    public int Level { get; set; }
-    protected float SpawnTime { get; set; }
+    [ShowInInspector] public Hero Hero { get; set; }
 
+    public bool CanSpawn { get; set; }
+    protected float SpawnTime;
     public virtual void Initialize(WeaponValue value, Hero hero)
     {
-        WeaponValue = value;
-        Hero = hero;
-        Prefab = value.prefab;
+        WeaponValue.damage = value.damage;
+        WeaponValue.count = value.count;
+        WeaponValue.duration = value.duration;
+        WeaponValue.count = value.count;
+        WeaponValue.id = value.id;
+        WeaponValue.level = value.level;
+        WeaponValue.speed = value.speed;
+        WeaponValue.spawnTime = value.spawnTime;
+        WeaponValue.sprite = value.sprite;
+        WeaponValue.weaponType = value.weaponType;
+        WeaponValue.prefab = value.prefab;
         SpawnTime = 0;
-        Level = 0;
+        Hero = hero;
+        UpLevel();
         AddWeapon(value.count);
     }
 
@@ -30,20 +38,22 @@ public class WeaponSpawner : MonoBehaviour
         if (Hero) transform.position = Hero.transform.position;
         CheckTimeSpawn();
     }
+    
     public virtual void AddWeapon(int newCount)
     {
         for (var index = 0; index < newCount; index++)
         {
-            var spawnWeapon = SimplePool.Spawn(Prefab, transform.position, Quaternion.identity);
+            var spawnWeapon = SimplePool.Spawn(WeaponValue.prefab, transform.position, Quaternion.identity);
             var weapon = spawnWeapon.GetComponent<Weapon>();
             spawnWeapon.SetActive(false);
             weapon.Initialize(WeaponValue, Hero, transform);
             weapons.Add(weapon);
         }
 
-        Count += newCount;
+        WeaponValue.count += newCount;
     }
 
+    
     protected virtual void CheckTimeSpawn()
     {
         SpawnTime -= Time.deltaTime;
@@ -59,6 +69,16 @@ public class WeaponSpawner : MonoBehaviour
 
     public virtual void UpLevel()
     {
-        Level += 1;
+        WeaponValue.level += 1;
+        InitUpLevel();
+    }
+
+    public virtual void InitUpLevel()
+    {
+        WeaponValue.damage += 2f;
+        WeaponValue.count += 1;
+        // WeaponValue.duration -= Level * 0.02f;
+        // Count = Level;
+        // SpawnTime -= Level * 0.02f;
     }
 }

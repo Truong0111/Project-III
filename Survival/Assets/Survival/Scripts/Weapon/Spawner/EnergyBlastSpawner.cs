@@ -8,7 +8,7 @@ public class EnergyBlastSpawner : WeaponSpawner
     {
         for (var i = 0; i < newCount; i++)
         {
-            var spawnWeapon = SimplePool.Spawn(Prefab, transform.position, Quaternion.identity);
+            var spawnWeapon = SimplePool.Spawn(WeaponValue.prefab, transform.position, Quaternion.identity);
             var weapon = spawnWeapon.GetComponent<Weapon>();
             weapon.Initialize(WeaponValue, Hero, null);
             spawnWeapon.SetActive(false);
@@ -18,24 +18,23 @@ public class EnergyBlastSpawner : WeaponSpawner
 
     public override IEnumerator SpawnWeapon()
     {
+        if(!CanSpawn) yield break;
         yield return new WaitUntil(() => Hero);
-        for (var index = 0; index < weapons.Count; index++)
+        foreach (var weapon in weapons)
         {
-            var weapon = weapons[index];
             var spawnWeapon = weapon.gameObject;
-            if(spawnWeapon.activeSelf) continue;
             spawnWeapon.SetActive(true);
-            SetupPosition(spawnWeapon.transform);
+            // SetupPosition(spawnWeapon.transform);
             yield return new WaitForSeconds(SpawnTime);
         }
     }
 
     protected override void CheckTimeSpawn()
     {
-        // SpawnTime -= Time.deltaTime;
-        // if (SpawnTime > 0) return;
-        // StartCoroutine(SpawnWeapon());
-        // SpawnTime = WeaponValue.spawnTime;
+        SpawnTime -= Time.deltaTime;
+        if (SpawnTime > 0) return;
+        StartCoroutine(SpawnWeapon());
+        SpawnTime = WeaponValue.spawnTime;
     }
 
     private void SetupPosition(Transform objTransform)
