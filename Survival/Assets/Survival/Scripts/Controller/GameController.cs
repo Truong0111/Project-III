@@ -7,9 +7,14 @@ using UnityEngine;
 public class GameController : Singleton<GameController>
 {
     public Hero Hero { get; set; }
-    public int CurrentTime { get; set; }
+    public float CurrentTime { get; private set; } = 0;
     public IEnumerator Start()
     {
         yield return new WaitUntil(() => Hero);
+    }
+
+    private void Update()
+    {
+        CurrentTime += Time.deltaTime;
     }
 }

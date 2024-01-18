@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityAtoms.BaseAtoms;
-using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 

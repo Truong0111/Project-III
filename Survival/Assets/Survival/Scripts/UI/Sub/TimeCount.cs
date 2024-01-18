@@ -8,8 +8,7 @@ using UnityEngine;
 
 public class TimeCount : MonoBehaviour
 {
-    [Title("Event")] 
-    [SerializeField] private VoidEvent startGameEvent;
+    [Title("Event")] [SerializeField] private VoidEvent startGameEvent;
     [SerializeField] private VoidEvent stopGameEvent;
     [SerializeField] private VoidEvent loseEvent;
     [SerializeField] private VoidEvent winEvent;
@@ -22,6 +21,7 @@ public class TimeCount : MonoBehaviour
     private static float TimeTarget => GameManager.Instance.TimeTarget;
     private bool _isPaused = false;
     private Coroutine _coroutine;
+
     private void Awake()
     {
         startGameEvent.Register(StartCountTime);
@@ -46,6 +46,7 @@ public class TimeCount : MonoBehaviour
 
     private void PauseCountTime() => _isPaused = true;
     private void ResumeCountTime() => _isPaused = false;
+
     private void BackToMenu()
     {
         StopCountTime();
@@ -55,18 +56,18 @@ public class TimeCount : MonoBehaviour
     private void StopCountTime()
     {
         _isPaused = true;
-        if(_coroutine != null) StopCoroutine(_coroutine);
+        if (_coroutine != null) StopCoroutine(_coroutine);
     }
+
     private void StartCountTime()
     {
         gameObject.SetActive(true);
         timeCountText.text = TimeFormat(0f);
-        _coroutine = StartCoroutine(MTime.CountUp(TimeTarget, UpdateCountText, CountDone,() => _isPaused));
+        _coroutine = StartCoroutine(MTime.CountUp(TimeTarget, UpdateCountText, CountDone, () => _isPaused));
     }
-    
+
     private void UpdateCountText(int counter)
     {
-        GameController.Instance.CurrentTime = counter;
         timeCountText.text = TimeFormat(counter);
     }
 
@@ -80,6 +81,7 @@ public class TimeCount : MonoBehaviour
 
     private void CountDone() => winEvent.Raise();
 }
+
 public static class MTime
 {
     public static IEnumerator CountDown(float duration, Action<int> remainTick = null, Action onEnd = null

@@ -10,6 +10,9 @@ public class PlayerMovement : CharacterMovement
     {
         base.Start();
         _dynamicJoystick = (DynamicJoystick)DynamicJoystick.Instance;
+#if UNITY_STANDALONE_WIN
+        _dynamicJoystick.enabled = false;
+#endif
     }
 
     public override void ApplyMove()

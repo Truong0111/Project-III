@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b900c1f678cbf4d49a0cd3d148f3c95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuEvent: {fileID: 11400000, guid: 0f047bc2ce1790f4488894231babd3ce, type: 2}
   imageWeapon: {fileID: 8725793749634845646}
   levelWeaponText: {fileID: 8871173713565854916}
 --- !u!1 &6462199933469739938
