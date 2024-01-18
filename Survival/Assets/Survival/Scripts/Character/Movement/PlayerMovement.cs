@@ -21,12 +21,11 @@ public class PlayerMovement : CharacterMovement
         var vertical = _dynamicJoystick.Vertical;
         Direction = new Vector3(horizontal, 0, vertical).normalized;
         
-#if UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
         var horizontalInput = Input.GetAxisRaw("Horizontal");
         var verticalInput = Input.GetAxisRaw("Vertical");
+        Direction = new Vector3(horizontalInput, 0, verticalInput).normalized;
 #endif
-        
-        
         
         var thisTransform = transform.position;
         var targetPos = thisTransform + Direction;
