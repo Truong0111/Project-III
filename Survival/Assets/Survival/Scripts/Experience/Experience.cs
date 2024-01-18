@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,7 +17,7 @@ public class Experience : MonoBehaviour
 
     private IEnumerator MoveToHero(Action onEnd = null)
     {
-        while (Vector3.Distance(transform.position, Hero.transform.position) > 0.01f)
+        while (Vector3.Distance(transform.position, Hero.transform.position) > 0.2f)
         {
             var direction = Hero.transform.position - transform.position;
             
@@ -38,7 +36,7 @@ public class Experience : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Hero>(out var hero))
+        if (other.GetComponent<Hero>())
         {
             StartCoroutine(MoveToHero(HeroCollectExperience));
         }
